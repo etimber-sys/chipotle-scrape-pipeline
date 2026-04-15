@@ -27,8 +27,8 @@ def save_results(results: list, run_date: date, output_dir: Path = Path("knowled
         filename = f"{date_str}_{slug}.md"
         frontmatter = (
             f"---\n"
-            f"url: {result['url']}\n"
-            f"title: {_yaml_scalar(result['title'])}\n"
+            f"url: {_yaml_scalar(result['url'])}\n"
+            f"title: {_yaml_scalar(result.get('title', ''))}\n"
             f"description: {_yaml_scalar(result.get('description', ''))}\n"
             f"date_scraped: {date_str}\n"
             f"---\n\n"
