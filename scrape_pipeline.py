@@ -12,25 +12,26 @@ def slugify_url(url: str) -> str:
     return slug.strip("-")
 
 
-load_dotenv()
+if __name__ == "__main__":
+    load_dotenv()
 
-api_key = os.getenv("FIRECRAWL_API_KEY")
+    api_key = os.getenv("FIRECRAWL_API_KEY")
 
-# --- Step 01: Search + scrape with Firecrawl ---
+    # --- Step 01: Search + scrape with Firecrawl ---
 
-api_url = "https://api.firecrawl.dev/v2/search"
+    api_url = "https://api.firecrawl.dev/v2/search"
 
-headers = {
-    "Authorization": f"Bearer {api_key}"
-}
+    headers = {
+        "Authorization": f"Bearer {api_key}"
+    }
 
-payload = {
-    "query": "Chipotle investor relations press releases",
-    "limit": 5,
-    "scrapeOptions": {"formats": ["markdown"]}
-}
+    payload = {
+        "query": "Chipotle investor relations press releases",
+        "limit": 5,
+        "scrapeOptions": {"formats": ["markdown"]}
+    }
 
-response = requests.post(api_url, headers=headers, json=payload)
+    response = requests.post(api_url, headers=headers, json=payload)
 
-print(response)
-print(response.text)
+    print(response)
+    print(response.text)
