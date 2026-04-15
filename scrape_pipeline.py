@@ -61,3 +61,8 @@ if __name__ == "__main__":
 
     print(response)
     print(response.text)
+
+    data = response.json()
+    results = data["data"]["web"]
+    save_results(results, date.today())
+    print(f"Saved {len(results)} results to knowledge/raw/")
