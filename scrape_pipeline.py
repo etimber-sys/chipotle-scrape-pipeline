@@ -1,6 +1,5 @@
 import os
 import re
-import time
 from datetime import date
 from pathlib import Path
 from dotenv import load_dotenv
@@ -62,6 +61,7 @@ if __name__ == "__main__":
     print(response)
     print(response.text)
 
+    response.raise_for_status()
     data = response.json()
     results = data["data"]["web"]
     save_results(results, date.today())
