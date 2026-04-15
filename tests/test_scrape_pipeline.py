@@ -51,12 +51,11 @@ def test_save_results_file_content():
     with tempfile.TemporaryDirectory() as tmpdir:
         save_results(results, run_date, output_dir=Path(tmpdir))
         content = (Path(tmpdir) / "2026-04-15_ir-chipotle-com-news-releases.md").read_text()
-
-    assert "url: https://ir.chipotle.com/news-releases" in content
-    assert "title: News Releases" in content
-    assert "description: Investor news." in content
-    assert "date_scraped: 2026-04-15" in content
-    assert "# News Releases" in content
+        assert "url: https://ir.chipotle.com/news-releases" in content
+        assert "title: News Releases" in content
+        assert "description: Investor news." in content
+        assert "date_scraped: 2026-04-15" in content
+        assert "# News Releases" in content
 
 
 def test_save_results_missing_markdown():
@@ -73,6 +72,5 @@ def test_save_results_missing_markdown():
     with tempfile.TemporaryDirectory() as tmpdir:
         save_results(results, run_date, output_dir=Path(tmpdir))
         content = (Path(tmpdir) / "2026-04-15_example-com-page.md").read_text()
-
-    assert "url: https://example.com/page" in content
-    assert content.endswith("---\n\n")
+        assert "url: https://example.com/page" in content
+        assert content.endswith("---\n\n")

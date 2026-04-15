@@ -13,6 +13,13 @@ def slugify_url(url: str) -> str:
     return slug.strip("-")
 
 
+def _yaml_scalar(value: str) -> str:
+    value = value.replace('\r', '').replace('\n', ' ')
+    if ': ' in value or value.startswith(('{', '[', '|', '>', '-', '?', '!')):
+        return '"' + value.replace('"', '\\"') + '"'
+    return value
+
+
 def save_results(results: list, run_date: date, output_dir: Path = Path("knowledge/raw")) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     date_str = run_date.isoformat()
@@ -22,8 +29,8 @@ def save_results(results: list, run_date: date, output_dir: Path = Path("knowled
         frontmatter = (
             f"---\n"
             f"url: {result['url']}\n"
-            f"title: {result['title']}\n"
-            f"description: {result.get('description', '')}\n"
+            f"title: {_yaml_scalar(result['title'])}\n"
+            f"description: {_yaml_scalar(result.get('description', ''))}\n"
             f"date_scraped: {date_str}\n"
             f"---\n\n"
         )
