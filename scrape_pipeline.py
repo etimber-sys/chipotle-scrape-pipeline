@@ -1,6 +1,7 @@
 import os
 import re
 import time
+from datetime import date
 from pathlib import Path
 from dotenv import load_dotenv
 import requests
@@ -10,6 +11,24 @@ def slugify_url(url: str) -> str:
     slug = re.sub(r"https?://", "", url)
     slug = re.sub(r"[^a-z0-9]+", "-", slug.lower())
     return slug.strip("-")
+
+
+def save_results(results: list, run_date: date, output_dir: Path = Path("knowledge/raw")) -> None:
+    output_dir.mkdir(parents=True, exist_ok=True)
+    date_str = run_date.isoformat()
+    for result in results:
+        slug = slugify_url(result["url"])
+        filename = f"{date_str}_{slug}.md"
+        frontmatter = (
+            f"---\n"
+            f"url: {result['url']}\n"
+            f"title: {result['title']}\n"
+            f"description: {result.get('description', '')}\n"
+            f"date_scraped: {date_str}\n"
+            f"---\n\n"
+        )
+        body = result.get("markdown", "")
+        (output_dir / filename).write_text(frontmatter + body, encoding="utf-8")
 
 
 if __name__ == "__main__":
