@@ -35,7 +35,13 @@ Chipotle Mexican Grill (NYSE: CMG) will host a conference call on Wednesday, Apr
 
 NYSECMG
 
-Loading...
+$31.98
+
+-$1.00
+
+Currency in USD.
+
+Quote data delayed by at least 15 minutes.
 
 2025 ANNUAL
 
@@ -101,3 +107,5 @@ Cookies are used to support and manage your interactions with our website and pr
 
 
 OKAYPRIVACY POLICY
+
+Twitter Widget Iframe

@@ -1,7 +1,7 @@
 ---
 url: https://ir.chipotle.com/news-releases
-title: News Releases - Chipotle Mexican Grill
-description: These are news releases that are related to our Investor efforts. Releases are listed in chronological order and are archived by year.
+title: News Releases
+description: News Releases · Apr 29, 2026. CHIPOTLE ANNOUNCES FIRST QUARTER 2026 RESULTS · Apr 29, 2026. CHIPOTLE BRINGS REAL INGREDIENTS TO CINCO DE MAYO WITH FREE CHIPS AND ...
 date_scraped: 2026-05-05
 ---
 
